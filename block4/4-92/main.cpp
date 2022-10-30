@@ -2,12 +2,14 @@
 #include <bitset>
 using namespace std;
 int main(){
-    int i,a,k,j,u;
+    int i,a,k,u;
+    long long int j = 0;
+    k = 1;
     char b;
-    cout << "Enter the number: ";
-    cin >> dec >> i;
+    cout << "Enter num: ";
+    cin >> hex >> i;
     a = i;
-    for (int w = 3; w < 8; w++) {
+    for (int w = 2; w < 9; w++) {
         u = i;
         k = 1;
         j = 0;
@@ -17,13 +19,17 @@ int main(){
             k*=10;
 
         }
-        cout << w << ": " << j << endl;
+        cout << w << ": "<< j << endl;
     }
+    while (i>0) {
+        j+=(i%4)*k;
+        i = i/4;
+        k*=10;
 
-    cout << "8: " << oct << a << endl;
+    }
     cout << "16: " << hex << a << endl;
 
-    b = a;
-    bitset<8> x(b);
-    cout << "2: " << x << endl;
+
+
+
 }
