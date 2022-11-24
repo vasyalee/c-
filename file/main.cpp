@@ -48,7 +48,7 @@ int main() {
     else {
         getline(fin, nums); // считали строку из файла
         fin.close(); // закрываем файл
-//        cout << nums << endl; // напечатали эту строку
+        cout << nums << endl;
     }
 
 
