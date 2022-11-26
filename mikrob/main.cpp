@@ -53,9 +53,8 @@ int main()
             allDead = true;
             for (int i = 0; i < 21; i++) {
                 for (int j = 0; j < 21; j++) {
-                    if (now[i][j] == 0) {
-                        then[i][j] = now[i][j] + 1;
-                    } else if (now[i][j] == 12) {
+
+                    if (now[i][j] == 12) {
                         then[i][j] = 0;
                     } else {
                         if (i == 0) {
