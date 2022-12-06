@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    int n, g;
+    int n, g, neighboursCount;
     ifstream dat;
     ofstream out;
     double now[21][21];
@@ -44,7 +44,9 @@ int main()
     dat.close();
     for (int q = 0; q < n; q++) {
         for (int i = 0; i < 21; i++) {
+
             for (int j = 0; j < 21; j++) {
+                neighboursCount = 0;
                 if (now[i][j] == 0) {
                     then[i][j] = now[i][j] + 1;
                 } else if (now[i][j] == 12) {
@@ -111,16 +113,25 @@ int main()
                             then[i][j] = 0;
                         }
                     } else {
-                        if (((now[i][j - 1] != 0) and (now[i - 1][j] != 0)) or
-                            ((now[i][j - 1] != 0) and (now[i + 1][j] != 0)) or
-                            ((now[i][j - 1] != 0) and (now[i][j + 1] != 0)) or
-                            ((now[i + 1][j] != 0) and (now[i - 1][j] != 0)) or
-                            ((now[i][j + 1] != 0) and (now[i - 1][j] != 0)) or
-                            ((now[i][j + 1] != 0) and (now[i + 1][j] != 0))) {
+                        if (now[i][j - 1] != 0) {
+                            neighboursCount++;
+                        }
+                        if (now[i][j + 1] != 0) {
+                            neighboursCount++;
+                        }
+                        if (now[i - 1][j] != 0) {
+                            neighboursCount++;
+                        }
+                        if (now[i + 1][j] != 0) {
+                            neighboursCount++;
+                        }
+                        if (neighboursCount == 2 or neighboursCount == 3) {
                             then[i][j] = now[i][j] + 1;
-                        } else {
+                        }
+                        else {
                             then[i][j] = 0;
                         }
+
                     }
                 }
             }
