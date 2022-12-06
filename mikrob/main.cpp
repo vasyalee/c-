@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    int n, g, neighboursCount;
+    int n, g, neighboursCount, livesCount;
     ifstream dat;
     ofstream out;
     double now[21][21];
@@ -43,6 +43,7 @@ int main()
     }
     dat.close();
     for (int q = 0; q < n; q++) {
+        livesCount = 0;
         for (int i = 0; i < 21; i++) {
 
             for (int j = 0; j < 21; j++) {
@@ -146,9 +147,21 @@ int main()
         {
             for (int j = 0; j < 21; j++) {
                 cout << then[i][j] << " ";
+                if (now[i][j] > 0) {
+                    livesCount++;
+                }
             }
             cout << endl;
         }
         cout << "----------------------------------------------------------------" << endl;
+        if (livesCount > 0) {
+            cout << "There are " << livesCount << " lives in this generation" << endl;
+            cout << endl;
+        }
+        else {
+            cout << "Everyone is dead!" << endl;
+            break;
+        }
+
     }
 }
